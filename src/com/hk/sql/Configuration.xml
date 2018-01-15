@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+<!-- 	DB 접속정보 파일 설정 -->
+	<properties resource="com/hk/sql/db.properties"/>
+	
+	
+<!-- 	변수설정 (결과를 받거나 파라미터로 전달할곳) , 변수를 여러개 설정할수도 있다.-->
+	<typeAliases>
+		<typeAlias type="com.hk.caldtos.CalDto" alias="calDto"/> <!--typeAlias type="큐네임(=패키지명.클래스)"-->
+		
+	
+		
+	</typeAliases>
+	
+<!-- 	DB접속 정보 셋팅 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/> <!--db.properties에 설정된 이름  -->
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+<!-- sql문을 작성한 XML 경로 설정  -->	
+	<mappers>
+		<mapper resource="com/hk/sql/DataMapper.xml"/> <!--내가 쓸 쿼리문들이 어디에 작성되어있는지   -->
+	</mappers>
+</configuration>
+
+
+
+
+
